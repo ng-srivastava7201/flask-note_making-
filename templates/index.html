@@ -1,4 +1,23 @@
 {% extends 'base.html' %}
-{% block head %} {% endblock %}
+{% block head %} <title>Notes</title>{% endblock %}
 {% block body %}
+<div class='content'>
+  <h1 style='text-align:centre'>Notes</h1>
+  <table>
+    <tr>
+      <th>Notes</th>
+      <th>Date Created</th>
+    </tr>
+    {% for note in notes %}
+    <tr>
+      <td>{{ note.content }}</td>
+      <td>{{ note.date_created.date() }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <form action='/' method='POST'>
+    <textarea id='content' name='content'></textarea>
+    <button type='submit'>Submit</button>
+  </form>
+</div>
 {% endblock %}
